@@ -178,6 +178,7 @@ def parse_args_unpaired_training():
     parser.add_argument("--enable_xformers_memory_efficient_attention", action="store_true", help="Whether or not to use xformers.")
 
     args = parser.parse_args()
+    print("Argument Set for Current Session:\n",args)
     return args
 
 

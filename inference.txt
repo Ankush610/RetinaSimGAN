@@ -1,0 +1,4 @@
+python src/inference_unpaired.py --model_path "/home/omjadhav/ankush/img2img-turbo/output/checkpoints/model_1.pkl" \
+    --input_image "/home/omjadhav/ankush/img2img-turbo/data/EYE/test_A" \
+    --prompt "picture of a real eye" --direction "a2b" \
+    --output_dir "outputs" --image_prep "no_resize"

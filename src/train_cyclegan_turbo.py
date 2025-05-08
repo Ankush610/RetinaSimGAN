@@ -163,6 +163,7 @@ def main(args):
             module.fused_attn = False
 
     for epoch in range(first_epoch, args.max_train_epochs):
+        print(f"Epoch : {epoch}")
         for step, batch in enumerate(train_dataloader):
             l_acc = [unet, net_disc_a, net_disc_b, vae_enc, vae_dec]
             with accelerator.accumulate(*l_acc):
