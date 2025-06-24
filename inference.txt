@@ -1,4 +1,10 @@
-python src/inference_unpaired.py --model_path "/home/omjadhav/ankush/img2img-turbo/output/checkpoints/model_1.pkl" \
-    --input_image "/home/omjadhav/ankush/img2img-turbo/data/EYE/test_A" \
+python src/inference_unpaired.py --model_path "/home/omjadhav/ankush/img2img-turbo/logs/result_worked_1/output/checkpoints/model_11001.pkl" \
+    --input_image "/home/omjadhav/ankush/img2img-turbo/inference/test/sim_img_crop.png" \
     --prompt "picture of a real eye" --direction "a2b" \
-    --output_dir "outputs" --image_prep "no_resize"
+    --output_dir "/home/omjadhav/ankush/img2img-turbo/inference/output" --image_prep "resize_256"
+
+
+python src/inference_unpaired.py --model_path "/home/omjadhav/ankush/img2img-turbo/logs/result_worked_1/output/checkpoints/model_11001.pkl" \
+    --input_image "/home/omjadhav/ankush/img2img-turbo/inference/test/sim_img_real.jpg" \
+    --prompt "picture of a simulated eye" --direction "b2a" \
+    --output_dir "/home/omjadhav/ankush/img2img-turbo/inference/output" --image_prep "resize_256"

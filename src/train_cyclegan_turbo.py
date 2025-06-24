@@ -1,25 +1,25 @@
-import os
-import gc
-import copy
-import lpips
-import torch
-import wandb
-from glob import glob
+import os # for os operatios
+import gc # for garbage collection
+import copy # for deep copy
+import lpips # for perceptual loss
+import torch 
+import wandb # for logging
+from glob import glob # for file globbing (ex *.jpg, *.png)
 import numpy as np
 from accelerate import Accelerator
-from accelerate.utils import set_seed
-from PIL import Image
+from accelerate.utils import set_seed 
+from PIL import Image # for image processing
 from torchvision import transforms
-from tqdm.auto import tqdm
-from transformers import AutoTokenizer, CLIPTextModel
-from diffusers.optimization import get_scheduler
-from peft.utils import get_peft_model_state_dict
-from cleanfid.fid import get_folder_features, build_feature_extractor, frechet_distance
-import vision_aided_loss
-from model import make_1step_sched
+from tqdm.auto import tqdm 
+from transformers import AutoTokenizer, CLIPTextModel 
+from diffusers.optimization import get_scheduler # for learning rate scheduler
+from peft.utils import get_peft_model_state_dict # for getting the state dict of the model
+from cleanfid.fid import get_folder_features, build_feature_extractor, frechet_distance # for FID calculation
+import vision_aided_loss # for vision aided loss
+from model import make_1step_sched # for making the scheduler
 from cyclegan_turbo import CycleGAN_Turbo, VAE_encode, VAE_decode, initialize_unet, initialize_vae
 from my_utils.training_utils import UnpairedDataset, build_transform, parse_args_unpaired_training
-from my_utils.dino_struct import DinoStructureLoss
+from my_utils.dino_struct import DinoStructureLoss 
 
 
 def main(args):

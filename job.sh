@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=img2img-turbo-run
-#SBATCH --nodes=2
+#SBATCH --nodes=3
 #SBATCH --ntasks-per-node=1          # one launcher per node
 #SBATCH --cpus-per-task=32
 #SBATCH --gres=gpu:2
@@ -100,13 +100,13 @@ srun accelerate launch \
   --pretrained_model_name_or_path="stabilityai/sd-turbo" \
   --dataset_folder data/EYE \
   --train_img_prep "resize_286_randomcrop_256x256_hflip" --val_img_prep "resize_256" \
-  --learning_rate "1e-5" --max_train_steps 10000 \
-  --max_train_epochs 2000 \
+  --learning_rate "1e-5" --max_train_steps 25000 \
+  --max_train_epochs 5000 \
   --train_batch_size 1 --gradient_accumulation_steps 1 \
   --tracker_project_name "cyclegan_turbo" \
   --enable_xformers_memory_efficient_attention --validation_steps 250 \
   --lambda_gan 0.5 --lambda_idt 1 --lambda_cycle 1 \
-  --output_dir output/
+  --output_dir /scratch/omjadhav/output/
 
 echo "===================================="
 echo "Training Completed"
